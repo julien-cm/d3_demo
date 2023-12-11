@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+
+    <title>D3 Charts</title>
+
+    <link rel="stylesheet" href="milligram.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <style>
+        body{
+            padding:2vh 0;
+            font-family: 'Work Sans', sans-serif;
+        }
+        code{
+            font-size: 16px;
+            padding:15px !important;
+            margin:0;
+        }
+
+        .row{
+            margin:3vh 0;
+        }
+
+        svg{
+            border:solid 1px #f2f2f2;
+            border-radius: 3px;
+            margin:1vh 0;
+        }
+
+        xmp{
+            margin:0;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+            <h1>D3 Charts</h1>
+            <hr>
+            <h4>Contents</h4>
+            <ul>
+                <li>Importing libraries</li>
+                <li>SVG overview</li>
+                <li>Shapes</li>
+                <li>Transformations</li>
+                <li>Importing datasets</li>
+            </ul>
+
+        </div>
+    </div>
+  
+
+    <div class="row">
+
+        <div class="column column-80 column-offset-10">
+        <h3>Importing libraries</h3>
+        
+        <p>You can include JavaScript in your HTML in two ways:           </p>
+            <ul>
+                <li>Writing the code in your HTML</li>
+                <li>Including it as a link to an external file</li>
+            </ul>
+           
+ 
+
+        <pre><code>
+            <xmp>
+    <head> 
+        <title>Page Title</title>
+        <link rel="stylesheet" href="milligram.css">
+        <script src="myscripts.js"></script>
+    </head >
+            
+            </xmp>
+        </code></pre>
+        </div>
+    </div>
+
+    <!-- SVG OVERVIEW -->
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+            <h3>SVG</h3>
+            <p>SVG images are defined in a vector graphics format and stored in XML text files. 
+                SVG images can thus be scaled in size without loss of quality, and SVG files can be searched, indexed, scripted, and compressed. 
+                The XML text files can be created and edited with text editors or vector graphics editors, and are rendered by the most-used web browsers.</p>
+        
+         
+        </div>
+    </div>
+
+    <!-- SVG SHAPES USING D3 -->
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+            <h3>SVG Shapes</h3>
+            <p>These shapes are drawn using html tags with x,y properties, which determine placement, and width and height determining shape</p>
+            
+
+            <svg width="500" height="500">
+                <rect x="25" y="25" width="200" height="200"></rect>
+                <circle cx="350" cy="350" r="50"/>
+            </svg>
+            
+            <br><br>
+            <p>Rectangles will have x,y,width & height properties</p>
+            
+            <pre><code>
+                <xmp>
+    <svg width="500" height="500">
+        <rect x="25" y="25" width="200" height="200">
+        </rect>
+        <circle cx="350" cy="350" r="50"/>
+    </svg>
+                
+                </xmp>
+            </code></pre>
+        </div>
+    </div>
+
+
+
+
+    <!-- SVG Transformations -->
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+
+
+
+            <h3>SVG Transformations</h3>
+
+            <p>SVG and shapes can be created using javascript as well.</p>
+            <p>In this example we use D3 specific functions to append and format an svg area.</p>
+            
+            <pre><code>
+                <xmp>
+    <div id="circle"></div>
+                
+                </xmp>
+            </code></pre>
+            
+            <div id="circle"></div>
+        <pre><code>
+    
+    
+    // create svg element:
+    var svg = d3.select("#circle")
+    .append("svg")
+    .attr("width", 200)
+    .attr("height", 200)
+    
+    // Add the path using this helper function
+    svg.append('circle')
+        .attr('cx', 100)
+        .attr('cy', 100)
+        .attr('r', 50)
+        .attr('stroke', 'black')
+        .attr('fill', '#69a3b2');
+   
+        </code></pre>
+        </div>
+
+
+    <script>
+        // create svg element:
+        var svg = d3.select("#circle")
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 200)
+        
+        // Add the path using this helper function
+        svg.append('circle')
+            .attr('cx', 100)
+            .attr('cy', 100)
+            .attr('r', 50)
+            .attr('stroke', 'black')
+            .attr('fill', '#69a3b2');
+    </script> 
+
+    </div>
+
+
+    <!-- SVG OVERVIEW -->
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+            <h3>Importing datasets</h3>
+            <p></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sepal_Length</td>
+                        <th>Sepal_Width</td>
+                        <th>Petal_Length</th>
+                        <th>Petal_Width</th>
+                        <th>Species</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4.6</td>
+                        <td>3.2</td>
+                        <td>1.4</td>
+                        <td>0.2</td>
+                        <td>setosa</td>
+                    </tr>
+                    <tr>
+                        <td>5.3</td>
+                        <td>3.7</td>
+                        <td>1.5</td>
+                        <td>0.2</td>
+                        <td>setosa</td>
+                    </tr>
+                    <tr>
+                        <td>5.3</td>
+                        <td>3.1</td>
+                        <td>4.0</td>
+                        <td>2</td>
+                        <td>setosa</td>
+                    </tr>
+                    <tr>
+                        <td>7.3</td>
+                        <td>2.4</td>
+                        <td>7.1</td>
+                        <td>4</td>
+                        <td>versicolor</td>
+                    </tr>
+                    <tr>
+                        <td>6.9</td>
+                        <td>6.4</td>
+                        <td>3.2</td>
+                        <td>4.5</td>
+                        <td>virginica</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>D3 has a bunch of filetypes it can support when loading data, and one of the most common is probably plain old CSV (comma separated values).Let's say you had a csv file with some city data in it:</p>
+            <pre><code>
+
+    // load a local csv file
+    d3.csv("/iris.csv").then(function(data) {
+        console.log(data[0]);
+    });
+    
+    // load a remote csv file
+    d3.csv("/https://raw.githubusercontent.com/julien-cm/sample_csv/main/sample_2.csv").then(function(data) {
+        console.log(data[0]);
+    });
+        
+    
+    Array(68)
+    0: {Sepal_Length: '5.1', Sepal_Width: '3.5', Petal_Length: '1.4', Petal_Width: '0.2', Species: 'setosa'}
+    1: {Sepal_Length: '4.9', Sepal_Width: '3'  , Petal_Length: '1.4', Petal_Width: '0.2', Species: 'setosa'}
+    2: {Sepal_Length: '4.7', Sepal_Width: '3.2', Petal_Length: '1.3', Petal_Width: '0.2', Species: 'setosa'}
+    3: {Sepal_Length: '4.6', Sepal_Width: '3.1', Petal_Length: '1.5', Petal_Width: '0.2', Species: 'setosa'}
+    4: {Sepal_Length: '5'  , Sepal_Width: '3.6', Petal_Length: '1.4', Petal_Width: '0.2', Species: 'setosa'}
+    5: {Sepal_Length: '5.4', Sepal_Width: '3.9', Petal_Length: '1.7', Petal_Width: '0.4', Species: 'setosa'}
+    6: {Sepal_Length: '4.6', Sepal_Width: '3.4', Petal_Length: '1.4', Petal_Width: '0.3', Species: 'setosa'}
+    7: {Sepal_Length: '5'  , Sepal_Width: '3.4', Petal_Length: '1.5', Petal_Width: '0.2', Species: 'setosa'}
+    8: {Sepal_Length: '4.4', Sepal_Width: '2.9', Petal_Length: '1.4', Petal_Width: '0.2', Species: 'setosa'}
+    9: {Sepal_Length: '4.9', Sepal_Width: '3.1', Petal_Length: '1.5', Petal_Width: '0.1', Species: 'setosa'}
+    10:{Sepal_Length: '5.4', Sepal_Width: '3.7', Petal_Length: '1.5', Petal_Width: '0.2', Species: 'setosa'}
+
+            
+    </code></pre>
+            
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="column column-80 column-offset-10">
+            <h3>Plotting a graph</h3>
+
+            <p>SVG and shapes can be created using javascript as well.</p>
+            <p>In this example we use D3 specific functions to append and format an svg area.</p>
+            <button id="sample_1" class="button button-outline">sample_1</button>
+            <button id="sample_2" class="button button-outline">sample_2</button>
+            <div id="my_dataviz"></div>
+            <br><br>
+
+        <pre><code>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+        width = 660 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    var svg = d3.select("#plot")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    var sample_1
+    //Read the data
+    d3.csv("https://raw.githubusercontent.com/julien-cm/sample_csv/main/sample_1.csv", function(data) {
+        
+        // Add X axis
+        var x = d3.scaleLinear()
+            .domain([4, 8])
+            .range([ 0, width ]);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        // Add Y axis
+        var y = d3.scaleLinear()
+            .domain([0, 9])
+            .range([ height, 0]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Color scale: give me a specie name, I return a color
+        var color = d3.scaleOrdinal()
+            .domain(["setosa", "versicolor", "virginica" ])
+            .range([ "#eda33b", "#3ba0ed", "#ed3b3b"])
+            
+        // Add dots
+        var circles = svg.append('g')
+            .selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return x(d.Sepal_Length); } )
+            .attr("cy", function (d) { return y(d.Petal_Length); } )
+            .attr("r", function (d) { return d.Petal_Length })
+            .attr('stroke', 'black')
+            .style("opacity", .6)
+            .style("fill", function (d) { return color(d.Species) } )
+
+    });
+
+            </code></pre>
+
+
+        <p> We can also add transitions by binding datasets to button click events</p>
+
+        <pre><code>
+    d3.csv("https://raw.githubusercontent.com/julien-cm/sample_csv/main/sample_2.csv", function(data) {
+        d3.select("#sample_2").on("click", function () {
+            svg.selectAll("circle").data(data)
+            .transition()
+            .duration(2000)
+            .attr("cx", function (d) { return x(d.Sepal_Length); } )
+            .attr("cy", function (d) { return y(d.Petal_Length); } )
+            .attr("r", 4)
+            .attr('stroke', 'black')
+            .style("opacity", .6)
+            .style("fill", function (d) { return color(d.Species) } )
+        })
+    });
+
+        </code></pre>
+        </div>
+
+        <script>
+
+            // set the dimensions and margins of the graph
+            var margin = {top: 10, right: 30, bottom: 30, left: 60},
+                width = 660 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom;
+
+            // append the svg object to the body of the page
+            var svg = d3.select("#my_dataviz")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+       
+            //Read the data
+            d3.csv("https://raw.githubusercontent.com/julien-cm/sample_csv/main/sample_1.csv", function(data) {
+                console.log(data);
+                // Add X axis
+                var x = d3.scaleLinear()
+                    .domain([4, 8])
+                    .range([ 0, width ]);
+                svg.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x));
+
+                // Add Y axis
+                var y = d3.scaleLinear()
+                    .domain([0, 9])
+                    .range([ height, 0]);
+                svg.append("g")
+                    .call(d3.axisLeft(y));
+
+                // Color scale: give me a specie name, I return a color
+                var color = d3.scaleOrdinal()
+                    .domain(["setosa", "versicolor", "virginica" ])
+                    .range([ "#eda33b", "#3ba0ed", "#ed3b3b"])
+
+                    
+                    
+                // Add dots
+                var circles = svg.append('g')
+                    .selectAll("circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function (d) { return x(d.Sepal_Length); } )
+                    .attr("cy", function (d) { return y(d.Petal_Length); } )
+                    .attr("r", function (d) { return d.Petal_Length })
+                    .attr('stroke', 'black')
+                    .style("opacity", .6)
+                    .style("fill", function (d) { return color(d.Species) } )
+
+                    console.log(data)
+                // we bind the sample_1 data to a button
+                d3.select("#sample_1").on("click", function () {
+
+                    circles.data(data)
+                    .transition()
+                    .duration(2000)
+                    .attr("cx", function (d) { return x(d.Sepal_Length); } )
+                    .attr("cy", function (d) { return y(d.Petal_Length); } )
+                    .attr("r", 4)
+                    .attr('stroke', 'black')
+                    .style("opacity", .6)
+                    .style("fill", function (d) { return color(d.Species) } )
+                })
+
+                d3.csv("https://raw.githubusercontent.com/julien-cm/sample_csv/main/sample_2.csv", function(data) {
+                    console.log(data)
+                    d3.select("#sample_2").on("click", function () {
+                        
+                        circles.data(data)
+                        .transition()
+                        .duration(2000)
+                        .attr("cx", function (d) { return x(d.Sepal_Length); } )
+                        .attr("cy", function (d) { return y(d.Petal_Length); } )
+                        .attr("r", 4)
+                        .attr('stroke', 'black')
+                        .style("opacity", .6)
+                        .style("fill", function (d) { return color(d.Species) } )
+                    })
+                
+                });
+
+            });
+        
+
+        
+            
+        
+            
+        </script> 
+
+    
+    
+
+    </div>
+
+
+  
+</div>
+
+
+</body>
+</html>
